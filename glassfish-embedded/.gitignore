@@ -1,0 +1,31 @@
+# Ignore everything...
+*
+#
+!.gitignore
+# but cleanup scripts
+!cleanup.bat
+!cleanup.sh
+# README.md file
+!README.md
+# and config and docroot directories and their contents
+!config
+!config/admin-keyfile
+!config/cacerts.jks
+!config/default-logging.properties
+!config/default-web.xml
+!config/domain.xml
+!config/domain-passwords
+!config/glassfish-acc.xml
+!config/javaee.server.policy
+!config/keyfile
+!config/keystore.jks
+!config/lockfile
+!config/logging.properties
+!config/login.conf
+!config/master-password
+!config/restrict.server.policy
+!config/server.policy
+!config/wss-server-config-1.0.xml
+!config/wss-server-config-2.0.xml
+!docroot
+!docroot/*

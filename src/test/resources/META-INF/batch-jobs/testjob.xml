@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="testjob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+	<step id="main">
+		<chunk checkpoint-policy="item" item-count="10" retry-limit="3">
+			<reader ref="TestItemReader"/>
+			<processor ref="TestItemProcessor"/>
+			<writer ref="TestItemWriter"/>
+		</chunk>
+		<partition>
+			<mapper ref="SimplePartitionMapper"/>
+		</partition>
+	</step>
+</job>
