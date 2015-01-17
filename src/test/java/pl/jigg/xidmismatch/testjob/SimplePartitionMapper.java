@@ -30,6 +30,7 @@ public class SimplePartitionMapper implements javax.batch.api.partition.Partitio
 
 	private static final int MIN = 100;
 	private static final int MAX = 1000;
+	private static final int PARTITION_COUNT = 3;
 
 	private Logger logger =
 		LoggerFactory.getLogger(SimplePartitionMapper.class);
@@ -52,7 +53,7 @@ public class SimplePartitionMapper implements javax.batch.api.partition.Partitio
 
 			@Override
 			public int getPartitions() {
-				return 3;
+				return PARTITION_COUNT;
 			}
 
 			@Override
