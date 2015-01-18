@@ -76,7 +76,7 @@ public class XidMismatchTest {
 	 * @throws Exception    When the test case fails.
 	 */
 	@Test
-	public void testJobCompletedEvent() throws Exception {
+	public void testXidMismatch() throws Exception {
 
 		JobOperator operator =
 			BatchRuntime.getJobOperator();
