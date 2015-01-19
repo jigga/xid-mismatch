@@ -5,9 +5,7 @@ import pl.jigg.xidmismatch.Subscriber;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.jms.JMSContext;
-import javax.jms.JMSException;
-import javax.jms.Topic;
+import javax.jms.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -17,18 +15,21 @@ import java.util.Collection;
 @Stateless
 public class StatelessSubscriberPublisher implements SubscriberPublisher {
 
-	@Inject
-	private JMSContext context;
-
+	@Resource
+	private ConnectionFactory connectionFactory;
 	@Resource(mappedName = "jms/topic/subscribers")
 	private Topic topic;
 
 	public void publish(Subscriber subscriber) throws JMSException {
-		context.createProducer().send(topic, subscriber);
+		try (JMSContext context = connectionFactory.createContext()){
+			context.createProducer().send(topic, subscriber);
+		}
 	}
 
 	@Override
 	public void publish(Collection<Subscriber> subscribers) throws JMSException {
-		context.createProducer().send(topic, new ArrayList<>(subscribers));
+		try (JMSContext context = connectionFactory.createContext()){
+			context.createProducer().send(topic, new ArrayList<>(subscribers));
+		}
 	}
 }
